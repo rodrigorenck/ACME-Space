@@ -23,4 +23,12 @@ public class ConglomeradoEspaconave {
     public List<Espaconave> findAll(){
         return listaEspaconaves;
     }
+
+    public Espaconave findByName(String nome) {
+        for (Espaconave e :
+                listaEspaconaves) {
+            if(e.getNome().equals(nome)) return e;
+        }
+        return null;
+    }
 }

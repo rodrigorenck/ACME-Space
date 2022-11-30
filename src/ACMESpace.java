@@ -2,6 +2,7 @@
 import model.*;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
 public class ACMESpace {
@@ -44,6 +45,79 @@ public class ACMESpace {
         }catch (InputMismatchException e){
             System.err.println("Erro! Formato de entrada invalido");
         }
+    }
+
+    private void carregarDados() {
+    }
+
+    private void salvarDados() {
+        System.out.println("\n[SALVAR DADOS]");
+    }
+
+    private void alterarEstadoTransporte() {
+        System.out.println("\n[ALTERAR ESTADO DO TRANSPORTE]");
+        System.out.print("Informe o identificador do transporte: ");
+        var id = sc.nextInt();
+        var transp = sistema.findTransporteById(id);
+        if(transp == null){
+            System.err.println("Erro transporte nao encontrado!");
+            return;
+        }
+        if(transp.getStatus() == StatusTransporte.CANCELADO || transp.getStatus() == StatusTransporte.FINALIZADO){
+            System.err.println("Erro transporte de estado cancelado ou finalizado nao pode ser alterado");
+            return;
+        }
+        System.out.print("Informe o novo estado: ");
+        var novo = StatusTransporte.valueOf(scStr.nextLine().toUpperCase());
+        transp.setStatus(novo);
+        System.out.println("Estado do transporte atualizado com sucesso!");
+    }
+
+    private void designarTransportes() {
+        System.out.println("\n[DESIGNAR TRANSPORTES]");
+        List<Espaconave> allEspaconaves = sistema.findAllEspaconaves();
+        Queue<Transporte> allTransportes = sistema.findAllTransportes();
+        if(allTransportes.isEmpty()){
+            System.err.println("Erro! Nao ha transportes");
+            return;
+        }
+        //pega o primeiro da fila
+        var transporte = allTransportes.remove();
+        System.out.println(transporte);
+
+        System.out.println("ESPACONAVES DISPONIVEIS");
+        allEspaconaves.forEach(System.out::println);
+
+
+        System.out.println("Informe o nome da espaconave desejada");
+        var nome = scStr.nextLine();
+        Espaconave espaconave = sistema.findEspaconaveByName(nome);
+        if(espaconave == null){
+            System.err.println("Espaconave desejada nao encontrada");
+            return;
+        }
+        if(espaconave instanceof Subluz){
+            transporte.setStatus(StatusTransporte.TRANSPORTANDO);
+            System.out.println("Transporte cadastrado com sucesso");
+            return;
+        }
+        if(espaconave instanceof FTL){
+            int p = 0;
+            double l = ((FTL) espaconave).getLimiteTransporte();
+            double c = 0;
+            if(transporte instanceof  TransporteDePessoas){
+                p = ((TransporteDePessoas) transporte).getQuantidadePessoasTransportadas();
+            }else if(transporte instanceof TransporteDeMateriais){
+                c = ((TransporteDeMateriais) transporte).getCarga();
+            }
+            if(l > p && l > c){
+                transporte.setStatus(StatusTransporte.TRANSPORTANDO);
+                System.out.println("Transporte cadastrado com sucesso");
+            }else{
+                System.out.println("Erro ao cadastrar o transporte!");
+            }
+        }
+
     }
 
     private void consultarTodosTransportes() {

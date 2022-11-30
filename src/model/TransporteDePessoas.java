@@ -11,12 +11,27 @@ public class TransporteDePessoas extends Transporte{
 
     @Override
     double calculaDistancia() {
-        return 0;
+        double a = Math.pow(getDestino().getCoordX() - getOrigem().getCoordY(), 2);
+        double b = Math.pow(getDestino().getCoordY() - getOrigem().getCoordY(), 2);
+        double c = Math.pow(getDestino().getCoordZ() - getOrigem().getCoordZ(), 2);
+        return Math.sqrt(a + b + c);
     }
 
     @Override
     double calculaCusto() {
-        return 0;
+        double fatorDistancia;
+        if(calculaDistancia()<0.5){
+            fatorDistancia = 1000000;
+        }else {
+            fatorDistancia = 100;
+        }
+        double custoDist = fatorDistancia * calculaDistancia();
+        double custoTransp = quantidadePessoasTransportadas * 100;
+        return custoDist * custoTransp;
+    }
+
+    public int getQuantidadePessoasTransportadas() {
+        return quantidadePessoasTransportadas;
     }
 
     @Override
@@ -24,6 +39,8 @@ public class TransporteDePessoas extends Transporte{
         return "Transporte{ id: " + super.getIdentificador() + " origem: " + super.getOrigem()
                 + " destino: " + super.getDestino() + " status: " + super.getStatus() + " tipo: TransporteDePessoas{" +
                 " quantidade de pessoas='" + quantidadePessoasTransportadas + '\'' +
+                " custo: " + calculaCusto() +
+                " distancia: " + calculaDistancia() +
                 "}}";
     }
 }
