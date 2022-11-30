@@ -47,11 +47,27 @@ public class ACMESpace {
         }
     }
 
+    //**
     private void carregarDados() {
+        System.out.println("\n[CARREGAR DADOS]");
+        System.out.println("Informe o nome do arquivo sem extensao: ");
+        var nome = scStr.nextLine();
+        try{
+            sistema.carregarDados(nome);
+        }catch (Exception e){
+            System.err.println("Erro ao carregar os dados do arquivo");
+        }
     }
 
     private void salvarDados() {
         System.out.println("\n[SALVAR DADOS]");
+        System.out.println("Informe o nome do arquivo sem extensao: ");
+        var nomeArquivo = scStr.nextLine();
+        try{
+            sistema.salvarDados(nomeArquivo);
+        }catch (Exception e){
+            System.err.println("Erro ao salvar os dados no arquivo");
+        }
     }
 
     private void alterarEstadoTransporte() {
@@ -127,7 +143,6 @@ public class ACMESpace {
             System.err.println("Erro! Nao ha transportes");
             return;
         }
-        //FALTA MOSTRAR DADOS DA ESPACONAVE E DISTANCIA E CUSTO
         allTransportes.forEach(System.out::println);
     }
 
@@ -174,7 +189,6 @@ public class ACMESpace {
         var carga = sc.nextDouble();
         var transporteMateriais = new TransporteDeMateriais(id, origem, destino, carga, desc);
         sistema.cadastrarTransporte(transporteMateriais);
-        //FALTA MOSTRAR A DISTANCIA E O CUSTO
         System.out.println(transporteMateriais);
     }
 
