@@ -135,4 +135,16 @@ public class Sistema {
     public void cadastrarTransporte(Transporte transportePessoas) {
         filaTransportes.add(transportePessoas);
     }
+
+    public Espaconave findEspaconaveByName(String nome) {
+        return conglomeradoEspaconave.findByName(nome);
+    }
+
+    public Transporte findTransporteById(int id) {
+        for (Transporte t :
+                filaTransportes) {
+            if(t.getIdentificador() == id) return t;
+        }
+        return null;
+    }
 }

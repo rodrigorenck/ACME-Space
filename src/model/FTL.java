@@ -10,6 +10,15 @@ public class FTL extends Espaconave{
         this.limiteTransporte = limiteTransporte;
     }
 
+
+    public double getVelocidadeMaximaWarp() {
+        return velocidadeMaximaWarp;
+    }
+
+    public int getLimiteTransporte() {
+        return limiteTransporte;
+    }
+
     @Override
     public String toString() {
         return "Espaconave{nome: " + super.getNome() + " EspacoPorto: " + super.getEspacoPorto().getNumero() + "Tipo: FTL{" +

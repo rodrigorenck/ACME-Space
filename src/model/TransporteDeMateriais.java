@@ -12,14 +12,33 @@ public class TransporteDeMateriais extends Transporte{
         this.descricaoMaterial = descricaoMaterial;
     }
 
+    public double getCarga() {
+        return carga;
+    }
+
+    public String getDescricaoMaterial() {
+        return descricaoMaterial;
+    }
+
     @Override
     double calculaDistancia() {
-        return 0;
+        double a = Math.pow(getDestino().getCoordX() - getOrigem().getCoordY(), 2);
+        double b = Math.pow(getDestino().getCoordY() - getOrigem().getCoordY(), 2);
+        double c = Math.pow(getDestino().getCoordZ() - getOrigem().getCoordZ(), 2);
+        return Math.sqrt(a + b + c);
     }
 
     @Override
     double calculaCusto() {
-        return 0;
+        double fatorDistancia;
+        if(calculaDistancia()<0.5){
+            fatorDistancia = 1000000;
+        }else {
+            fatorDistancia = 100;
+        }
+        double custoDist = fatorDistancia * calculaDistancia();
+        double custoTransp = carga * 500;
+        return custoDist * custoTransp;
     }
 
     @Override
@@ -28,6 +47,8 @@ public class TransporteDeMateriais extends Transporte{
                 + " destino: " + super.getDestino() + " status: " + super.getStatus() + " tipo: TransporteDeMateriais{" +
                 " descricaoMaterial='" + descricaoMaterial + '\'' +
                 ", carga=" + carga +
+                ", custo: " + calculaCusto() +
+                ", distancia: " + calculaDistancia() +
                 "}}";
     }
 }
