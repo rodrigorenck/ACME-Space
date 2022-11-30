@@ -1,9 +1,6 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
@@ -146,5 +143,30 @@ public class Sistema {
             if(t.getIdentificador() == id) return t;
         }
         return null;
+    }
+
+    public void salvarDados(String nomeArquivo) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo));
+        for (EspacoPorto p :
+                conglomeradoEspacoPorto.findAll()) {
+            writer.write(p.toString());
+        }
+        for (Espaconave e :
+                conglomeradoEspaconave.findAll()) {
+            writer.write(e.toString());
+        }
+        for (Transporte t :
+                filaTransportes) {
+            writer.write(t.toString());
+        }
+        writer.close();
+    }
+
+    public void carregarDados(String nome) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(nome));
+        var linha =reader.readLine();
+        while(linha != null){
+            linha = reader.readLine();
+        }
     }
 }
