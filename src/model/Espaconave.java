@@ -24,6 +24,10 @@ public class Espaconave {
         this.espacoPorto = espacoPorto;
     }
 
+    public void addTransporte(Transporte t){
+        listaTransportes.add(t);
+    }
+
     public void designarParaTransporte(Transporte t){
         listaTransportes.add(t);
 //        t.proximoEstado();

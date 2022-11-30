@@ -113,7 +113,7 @@ public class ACMESpace {
             return;
         }
         if(espaconave instanceof Subluz){
-            transporte.setStatus(StatusTransporte.TRANSPORTANDO);
+            espaconave.designarParaTransporte(transporte);
             System.out.println("Transporte cadastrado com sucesso");
             return;
         }
@@ -127,7 +127,7 @@ public class ACMESpace {
                 c = ((TransporteDeMateriais) transporte).getCarga();
             }
             if(l > p && l > c){
-                transporte.setStatus(StatusTransporte.TRANSPORTANDO);
+                espaconave.designarParaTransporte(transporte);
                 System.out.println("Transporte cadastrado com sucesso");
             }else{
                 System.out.println("Erro ao cadastrar o transporte!");
