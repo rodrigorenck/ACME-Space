@@ -6,15 +6,15 @@ public abstract class Transporte {
     private int identificador;
     private EspacoPorto origem;
     private EspacoPorto destino;
-    //pode ter 0 ou 1 espaconave
-    private boolean temEspaconave;
+//    //pode ter 0 ou 1 espaconave
+//    private boolean temEspaconave;
+    private Espaconave espaconave;
     private StatusTransporte status;
     public Transporte(int identificador, EspacoPorto origem, EspacoPorto destino) {
         this.identificador = identificador;
         this.origem = origem;
         this.destino = destino;
         this.status = StatusTransporte.PENDENTE;
-        this.temEspaconave = false;
     }
 
     abstract double calculaDistancia();
@@ -24,7 +24,24 @@ public abstract class Transporte {
         this.status = status;
     }
 
-    public void temEspaconave(){
-        this.temEspaconave = true;
+
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public EspacoPorto getOrigem() {
+        return origem;
+    }
+
+    public EspacoPorto getDestino() {
+        return destino;
+    }
+
+    public Espaconave getEspaconave() {
+        return espaconave;
+    }
+
+    public StatusTransporte getStatus() {
+        return status;
     }
 }
