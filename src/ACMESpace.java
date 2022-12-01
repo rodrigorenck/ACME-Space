@@ -1,10 +1,8 @@
 
 import model.*;
-import model.espaconave.ConglomeradoEspaconave;
 import model.espaconave.Espaconave;
 import model.espaconave.FTL;
 import model.espaconave.Subluz;
-import model.espacoporto.ConglomeradoEspacoPorto;
 import model.espacoporto.EspacoPorto;
 import model.transporte.StatusTransporte;
 import model.transporte.Transporte;
@@ -101,7 +99,7 @@ public class ACMESpace {
     private void designarTransportes() {
         System.out.println("\n[DESIGNAR TRANSPORTES]");
         List<Espaconave> allEspaconaves = sistema.findAllEspaconaves();
-        Queue<Transporte> allTransportes = sistema.findAllTransportes();
+        Queue<Transporte> allTransportes = sistema.findAllTransportesPendentes();
         if(allTransportes.isEmpty()){
             System.err.println("Erro! Nao ha transportes");
             return;
@@ -147,7 +145,7 @@ public class ACMESpace {
 
     private void consultarTodosTransportes() {
         System.out.println("\n[CONSULTAR TODOS TRANSPORTES]");
-        Queue<Transporte> allTransportes = sistema.findAllTransportes();
+        List<Transporte> allTransportes = sistema.findAllTransportes();
         if(allTransportes.isEmpty()){
             System.err.println("Erro! Nao ha transportes");
             return;
@@ -228,7 +226,7 @@ public class ACMESpace {
             espaconaves.forEach(System.out::println);
 
             System.out.println("\nFILA DE TRANSPORTES");
-            var transportes = sistema.findAllTransportes();
+            var transportes = sistema.findAllTransportesPendentes();
             transportes.forEach(System.out::println);
 
         }catch (Exception e) {

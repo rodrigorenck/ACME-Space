@@ -9,6 +9,7 @@ import model.transporte.TransporteDePessoas;
 
 import java.io.*;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 /**
@@ -19,6 +20,7 @@ public class Sistema {
     private final ConglomeradoEspacoPorto conglomeradoEspacoPorto = new ConglomeradoEspacoPorto();
     private final ConglomeradoEspaconave conglomeradoEspaconave = new ConglomeradoEspaconave();
     private final Queue<Transporte> filaTransportes = new ArrayDeque<>();
+    private final List<Transporte> listaTransportes = new ArrayList<>();
 
 
     public void carregarDadosIniciais(String fileName) throws IOException {
@@ -42,6 +44,7 @@ public class Sistema {
         linha = reader.readLine(); //pula a primeira linha
         while (linha != null) {
             var transporte = parseTransporte(linha);
+            listaTransportes.add(transporte);
             filaTransportes.add(transporte);
             linha = reader.readLine();
         }
@@ -109,8 +112,12 @@ public class Sistema {
         return conglomeradoEspaconave.findAll();
     }
 
-    public Queue<Transporte> findAllTransportes() {
+    public Queue<Transporte> findAllTransportesPendentes() {
         return filaTransportes;
+    }
+
+    public List<Transporte> findAllTransportes(){
+        return listaTransportes;
     }
 
     public boolean espaconaveExistsBy(String nome) {
@@ -141,8 +148,9 @@ public class Sistema {
         conglomeradoEspaconave.cadastra(espaconave);
     }
 
-    public void cadastrarTransporte(Transporte transportePessoas) {
-        filaTransportes.add(transportePessoas);
+    public void cadastrarTransporte(Transporte t) {
+        listaTransportes.add(t);
+        filaTransportes.add(t);
     }
 
     public Espaconave findEspaconaveByName(String nome) {
