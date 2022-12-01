@@ -20,11 +20,14 @@ public class Sistema {
 
 
     public void carregarDadosIniciais(String fileName) throws IOException {
-        if (fileName.equals("TESTE-espaconaves.dat")) {
+        String[] split = fileName.split("-");
+        var sufixo = split[1];
+
+        if (sufixo.equals("espaconaves.dat")) {
             carregarDadosIniciaisEspaconaves(fileName);
-        } else if (fileName.equals("TESTE-espacoportos.dat")) {
+        } else if (sufixo.equals("espacoportos.dat")) {
             carregarDadosIniciaisEspacoportos(fileName);
-        } else if (fileName.equals("TESTE-transportes.dat")) {
+        } else if (sufixo.equals("transportes.dat")) {
             carregarDadosIniciaisTransportes(fileName);
         } else {
             throw new FileNotFoundException();

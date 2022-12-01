@@ -19,15 +19,11 @@ public class ACMESpace {
 
     private Scanner sc;
     private Scanner scStr;
-    private ConglomeradoEspacoPorto conglomeradoEspacoPorto;
-    private ConglomeradoEspaconave conglomeradoEspaconave;
     private Sistema sistema;
 
     public ACMESpace(){
         scStr = new Scanner(System.in);
         sc = new Scanner(System.in);
-        conglomeradoEspacoPorto = new ConglomeradoEspacoPorto();
-        conglomeradoEspaconave = new ConglomeradoEspaconave();
         sistema = new Sistema();
     }
 
@@ -63,7 +59,7 @@ public class ACMESpace {
         System.out.println("Informe o nome do arquivo sem extensao: ");
         var nome = scStr.nextLine();
         try{
-            sistema.carregarDados(nome);
+            sistema.carregarDadosIniciais(nome);
         }catch (Exception e){
             System.err.println("Erro ao carregar os dados do arquivo");
         }
