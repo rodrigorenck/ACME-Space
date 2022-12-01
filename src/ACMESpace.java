@@ -1,5 +1,15 @@
 
 import model.*;
+import model.espaconave.ConglomeradoEspaconave;
+import model.espaconave.Espaconave;
+import model.espaconave.FTL;
+import model.espaconave.Subluz;
+import model.espacoporto.ConglomeradoEspacoPorto;
+import model.espacoporto.EspacoPorto;
+import model.transporte.StatusTransporte;
+import model.transporte.Transporte;
+import model.transporte.TransporteDeMateriais;
+import model.transporte.TransporteDePessoas;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -121,7 +131,7 @@ public class ACMESpace {
             int p = 0;
             double l = ((FTL) espaconave).getLimiteTransporte();
             double c = 0;
-            if(transporte instanceof  TransporteDePessoas){
+            if(transporte instanceof TransporteDePessoas){
                 p = ((TransporteDePessoas) transporte).getQuantidadePessoasTransportadas();
             }else if(transporte instanceof TransporteDeMateriais){
                 c = ((TransporteDeMateriais) transporte).getCarga();

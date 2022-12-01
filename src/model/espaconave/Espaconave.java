@@ -1,4 +1,8 @@
-package model;
+package model.espaconave;
+
+import model.espacoporto.EspacoPorto;
+import model.transporte.StatusTransporte;
+import model.transporte.Transporte;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +14,10 @@ import java.util.List;
 public class Espaconave {
     //padrao eh a Terra
     private EspacoPorto espacoPorto;
-    private List<Transporte> listaTransportes;
+    private List<Transporte> listaTransportes = new ArrayList<>();
     private String nome;
 
     public Espaconave(String nome) {
-//        this.espacoPorto;
         this.listaTransportes = new ArrayList<>();
         this.nome = nome;
     }
@@ -30,16 +33,15 @@ public class Espaconave {
 
     public void designarParaTransporte(Transporte t){
         listaTransportes.add(t);
-//        t.proximoEstado();
         t.setStatus(StatusTransporte.TRANSPORTANDO);
+    }
+
+    public List<Transporte> getListaTransportes() {
+        return listaTransportes;
     }
 
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public EspacoPorto getEspacoPorto() {

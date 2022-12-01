@@ -1,5 +1,12 @@
 package model;
 
+import model.espaconave.*;
+import model.espacoporto.ConglomeradoEspacoPorto;
+import model.espacoporto.EspacoPorto;
+import model.transporte.Transporte;
+import model.transporte.TransporteDeMateriais;
+import model.transporte.TransporteDePessoas;
+
 import java.io.*;
 import java.util.ArrayDeque;
 import java.util.List;

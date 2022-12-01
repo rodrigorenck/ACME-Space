@@ -1,6 +1,7 @@
-package model;
+package model.transporte;
 
-import java.util.List;
+import model.espacoporto.EspacoPorto;
+import model.espaconave.Espaconave;
 
 public abstract class Transporte {
     private int identificador;
