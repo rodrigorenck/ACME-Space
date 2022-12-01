@@ -1,6 +1,8 @@
-package model;
+package model.espaconave;
 
-public class FTL extends Espaconave{
+import model.espacoporto.EspacoPorto;
+
+public class FTL extends Espaconave {
     private double velocidadeMaximaWarp;
     private int limiteTransporte;
 

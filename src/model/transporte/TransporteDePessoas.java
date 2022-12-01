@@ -1,6 +1,8 @@
-package model;
+package model.transporte;
 
-public class TransporteDePessoas extends Transporte{
+import model.espacoporto.EspacoPorto;
+
+public class TransporteDePessoas extends Transporte {
 
     private int quantidadePessoasTransportadas;
 
@@ -10,7 +12,7 @@ public class TransporteDePessoas extends Transporte{
     }
 
     @Override
-    double calculaDistancia() {
+    public double calculaDistancia() {
         double a = Math.pow(getDestino().getCoordX() - getOrigem().getCoordY(), 2);
         double b = Math.pow(getDestino().getCoordY() - getOrigem().getCoordY(), 2);
         double c = Math.pow(getDestino().getCoordZ() - getOrigem().getCoordZ(), 2);
@@ -18,11 +20,11 @@ public class TransporteDePessoas extends Transporte{
     }
 
     @Override
-    double calculaCusto() {
+    public double calculaCusto() {
         double fatorDistancia;
-        if(calculaDistancia()<0.5){
+        if (calculaDistancia() < 0.5) {
             fatorDistancia = 1000000;
-        }else {
+        } else {
             fatorDistancia = 100;
         }
         double custoDist = fatorDistancia * calculaDistancia();

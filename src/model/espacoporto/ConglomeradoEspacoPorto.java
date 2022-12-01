@@ -1,4 +1,4 @@
-package model;
+package model.espacoporto;
 
 import java.util.ArrayList;
 import java.util.List;

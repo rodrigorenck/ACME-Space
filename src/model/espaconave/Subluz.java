@@ -1,4 +1,6 @@
-package model;
+package model.espaconave;
+
+import model.espacoporto.EspacoPorto;
 
 public class Subluz extends Espaconave {
     //limite eh de 0,3 warp
@@ -10,6 +12,15 @@ public class Subluz extends Espaconave {
         super(nome, espacoPorto);
         this.velocidadeMaximaImpulso = velocidadeMaximaImpulso;
         this.combustivel = combustivel;
+    }
+
+
+    public double getVelocidadeMaximaImpulso() {
+        return velocidadeMaximaImpulso;
+    }
+
+    public Combustivel getCombustivel() {
+        return combustivel;
     }
 
     @Override

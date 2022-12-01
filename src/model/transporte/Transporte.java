@@ -1,13 +1,12 @@
-package model;
+package model.transporte;
 
-import java.util.List;
+import model.espacoporto.EspacoPorto;
+import model.espaconave.Espaconave;
 
 public abstract class Transporte {
     private int identificador;
     private EspacoPorto origem;
     private EspacoPorto destino;
-//    //pode ter 0 ou 1 espaconave
-//    private boolean temEspaconave;
     private Espaconave espaconave;
     private StatusTransporte status;
     public Transporte(int identificador, EspacoPorto origem, EspacoPorto destino) {
@@ -24,6 +23,10 @@ public abstract class Transporte {
         this.status = status;
     }
 
+    public void setEspaconave(Espaconave espaconave) {
+        this.espaconave = espaconave;
+        espaconave.addTransporte(this);
+    }
 
     public int getIdentificador() {
         return identificador;

@@ -1,4 +1,4 @@
-package model;
+package model.espaconave;
 
 public enum Combustivel {
 
