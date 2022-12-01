@@ -11,7 +11,9 @@ import java.io.*;
 import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
-
+/**
+ * Autores: Rodrigo Renck, Arthur Bonazzi, Enrico Cidade
+ */
 public class Sistema {
 
     private final ConglomeradoEspacoPorto conglomeradoEspacoPorto = new ConglomeradoEspacoPorto();

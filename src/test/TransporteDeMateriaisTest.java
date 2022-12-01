@@ -7,7 +7,9 @@ import model.transporte.TransporteDeMateriais;
 import org.testng.annotations.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ * Autores: Rodrigo Renck, Arthur Bonazzi, Enrico Cidade
+ */
 public class TransporteDeMateriaisTest {
 
     @Test

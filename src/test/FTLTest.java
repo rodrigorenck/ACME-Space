@@ -5,7 +5,9 @@ import model.espacoporto.EspacoPorto;
 import org.testng.annotations.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ * Autores: Rodrigo Renck, Arthur Bonazzi, Enrico Cidade
+ */
 public class FTLTest {
 
     @Test

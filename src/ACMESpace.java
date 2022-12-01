@@ -15,6 +15,9 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
+/**
+ * Autores: Rodrigo Renck, Arthur Bonazzi, Enrico Cidade
+ */
 public class ACMESpace {
 
     private Scanner sc;

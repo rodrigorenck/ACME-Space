@@ -6,7 +6,9 @@ import model.espacoporto.EspacoPorto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ * Autores: Rodrigo Renck, Arthur Bonazzi, Enrico Cidade
+ */
 public class SubluzTest {
 
     @Test
